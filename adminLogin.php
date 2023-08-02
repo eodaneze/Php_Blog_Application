@@ -31,7 +31,7 @@
                       </div>
             
                   </div>
-                  <button class="btn" name="register">Register</button>
+                  <button class="btn" name="login">Login</button>
               </form>
               </div>
          </div>

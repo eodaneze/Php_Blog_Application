@@ -13,17 +13,17 @@
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"
                 style="color: #293A6C;">
-                <i class="bi bi-menu-button-wide"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-menu-button-wide"></i><span>Blogs</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="./viewProducts.php">
-                        <i class="bi bi-circle"></i><span>View Product</span>
+                    <a href="./addBlog.php">
+                        <i class="bi bi-circle"></i><span>Add Blog</span>
                     </a>
                 </li>
                 <li>
                     <a href="./addProduct.php">
-                        <i class="bi bi-circle"></i><span>Add Product</span>
+                        <i class="bi bi-circle"></i><span>View Blog</span>
                     </a>
                 </li>
             </ul>

@@ -31,7 +31,7 @@
 
          if(isset($_SESSION['adminId'])){
             $_SESSION['success'] = "Welcome $name";
-           header('location: ../adminPannel.php');
+           header('location: ../adminPanel.php');
            exit();
          }else{
             //  $error = urlencode("Email or password is incorrect"); 

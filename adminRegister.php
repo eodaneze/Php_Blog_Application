@@ -35,6 +35,9 @@
                       </div>
                   </div>
                   <button class="btn" name="register">Register</button>
+                  <div class="text-center">
+                      <p>Already have an account? <a href="./adminLogin.php">Login</a></p>
+                  </div>
               </form>
               </div>
          </div>

@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./addProduct.php">
+                    <a href="./viewBlog.php">
                         <i class="bi bi-circle"></i><span>View Blog</span>
                     </a>
                 </li>

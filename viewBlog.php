@@ -29,7 +29,7 @@
                     <div class="col-lg-3">
                              <img style="height: 200px;" class="img-fluid" src="./includes/blogImg/<?=$pic?>" alt="">
                          <div class="text-center">
-                            <a href="./singleBlog.php"><h5><?=$title?></h5></a>
+                            <a href="./singleBlog.php?id=<?=$id?>"><h5><?=$title?></h5></a>
                             <p>
                                 <span>Category: Artificial Intelligence</span>
                                 <span>Tag: Educational</span>
@@ -50,6 +50,6 @@
  
 
 <?php require_once('./alertify.php');
-  require_once("./footer.php")
+  require_once("./footer.php");
 
 ?>

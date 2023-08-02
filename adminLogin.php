@@ -11,15 +11,11 @@
      <div class="all-form d-flex align-items-center justify-content-center" style="height: 80vh;">
          <div class="form-content bg-white p-3">
             <div class="text-center">
-                 <h4>Admin Register</h4>
+                 <h4>Admin Login</h4>
             </div>
               <div>
-              <form action="./includes/adminRegister.php" method="post" enctype="multipart/form-data">
+              <form action="./includes/adminLogin.php" method="post">
                   <div class="row">
-                      <div class="col-lg-12 mb-3">
-                        <label>Name</label>
-                           <input type="text" name="name" class="form-control">
-                      </div>
 
                       <div class="col-lg-12 mb-3">
                         <label>Email</label>
@@ -30,9 +26,10 @@
                            <input type="password" name="password" class="form-control">
                       </div>
                       <div class="col-lg-12 mb-3">
-                        <label>Profile</label>
-                           <input name='file' type="file" class="form-control">
+                        <label>Confirm Password</label>
+                           <input type="password" name="conpassword" class="form-control">
                       </div>
+            
                   </div>
                   <button class="btn" name="register">Register</button>
               </form>

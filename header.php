@@ -16,6 +16,7 @@
     <link href="dashboard_assets/img/favicon.png" rel="icon">
     <link href="dashboard_assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,800;0,900;1,500;1,700&family=Roboto:wght@500&display=swap" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link rel="stylesheet" href="./assets/css/fontawesome.css">

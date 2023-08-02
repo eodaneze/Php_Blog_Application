@@ -37,6 +37,7 @@ require_once("./connection.php");
 
                 if(move_uploaded_file($filetmp, $filedestination)){
                     $md = date('Y-m-d');
+                    $details = mysqli_real_escape_string($conn, $details);
                     $sql = "INSERT INTO  posts(title, category, tags, blog_image, blog_details, createddate)VALUES('$title', '$cat', '$tags','$pic', '$details', '$md')";
 
                     $result = mysqli_query($conn, $sql);

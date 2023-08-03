@@ -4,7 +4,17 @@
   require_once('./sidebar.php');
 
 ?>
-
+ <script src="./tinymce/js/tinymce/tinymce.min.js"></script>
+  <script>
+    // Initialize TinyMCE
+    tinymce.init({
+      selector: '#myTextarea',
+      height: 300,
+      plugins: 'advlist autolink lists link image charmap print preview anchor',
+      toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image ',
+      menubar: 'file edit view insert format tools table help'
+    });
+  </script>
 <main class="main" id="main">
       <div class="pagetitle">
         
@@ -51,7 +61,7 @@
               </div>
               <div class="col-lg-12 mb-3">
                   <label class="fw-bold">Blog Details</label>
-                  <textarea name="details" id="" cols="30" rows="10" class="form-control"></textarea>
+                  <textarea id="myTextarea"  name="details" id="" cols="30" rows="10" class="form-control"></textarea>
               </div>
               
            </div>

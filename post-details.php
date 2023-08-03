@@ -127,6 +127,7 @@
                                   while($row = mysqli_fetch_assoc($result)){
                                     $name = $row['name'];
                                     $email = $row['email'];
+                                    $comment = $row['comment'];
                                       ?>
                                             <li>
                                               <!-- <div class="author-thumb">
@@ -134,7 +135,7 @@
                                               </div> -->
                                               <div class="right-content">
                                                 <h4><?=$email?><span>May 16, 2020</span></h4>
-                                                <p>Fusce ornare mollis eros. Duis et diam vitae justo fringilla condimentum eu quis leo. Vestibulum id turpis porttitor sapien facilisis scelerisque. Curabitur a nisl eu lacus convallis eleifend posuere id tellus.</p>
+                                                <p><?=$comment?></p>
                                               </div>
                                             </li>
                                       <?php

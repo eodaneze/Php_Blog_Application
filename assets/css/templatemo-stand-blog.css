@@ -414,7 +414,7 @@ header .navbar {
 	padding: 40px;
 	border-right: 1px solid #eee;
 	border-left: 1px solid #eee;
-	border-bottom: 1px solid #eee;
+	/* border-bottom: 1px solid #eee; */
 }
 
 .blog-posts .down-content span {
@@ -476,8 +476,8 @@ header .navbar {
 .blog-posts .down-content p {
 	padding: 25px 0px;
 	margin: 25px 0px;
-	border-top: 1px solid #eee;
-	border-bottom: 1px solid #eee;
+	/* border-top: 1px solid #eee; */
+	/* border-bottom: 1px solid #eee; */
 }
 
 .blog-posts .down-content ul.post-share {

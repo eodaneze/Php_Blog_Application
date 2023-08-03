@@ -6,6 +6,11 @@ require_once("./connection.php");
     $cat = isset($_POST['cat']) ? trim($_POST['cat']) : "";
     $tags = isset($_POST['tags']) ? trim($_POST['tags']) : "";
     $details = isset($_POST['details']) ? trim($_POST['details']) : "";
+
+    $content = mysqli_real_escape_string($conn, $details);
+
+    
+    
     
      
      if($title == "" || $cat == "" || $tags == "" || $details == ""){
@@ -37,8 +42,8 @@ require_once("./connection.php");
 
                 if(move_uploaded_file($filetmp, $filedestination)){
                     $md = date('Y-m-d H:i:s');
-                    $details = mysqli_real_escape_string($conn, $details);
-                    $sql = "INSERT INTO  posts(title, category, tags, blog_image, details)VALUES('$title', '$cat', '$tags','$pic', '$details')";
+                   
+                    $sql = "INSERT INTO  posts(title, category, tags, blog_image, details)VALUES('$title', '$cat', '$tags','$pic', '$content ')";
 
                     $result = mysqli_query($conn, $sql);
                     if($result){

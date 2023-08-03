@@ -128,20 +128,27 @@
                                     $name = $row['name'];
                                     $email = $row['email'];
                                     $comment = $row['comment'];
+                                    $created_at = $row['created_at'];
+                                    $dateString = $created_at;
+                                    $day = date('d', strtotime($dateString)); // Output: 03
+                                    $month = date('F', strtotime($dateString)); // Output: August
+                                    $year = date('Y', strtotime($dateString)); // Output: 2023
+                                    
+                                    $date = "${month} ${day}, ${year}";
                                       ?>
                                             <li>
-                                              <!-- <div class="author-thumb">
+                                              <div class="author-thumb">
                                                 <img src="assets/images/comment-author-01.jpg" alt="">
-                                              </div> -->
+                                              </div>
                                               <div class="right-content">
-                                                <h4><?=$email?><span>May 16, 2020</span></h4>
+                                                <h4><?=$email?><span><?=$date?></span></h4>
                                                 <p><?=$comment?></p>
                                               </div>
                                             </li>
                                       <?php
                                   }
                               }else{
-                                echo "<h2>No comments yet.</h2>";
+                                echo "<strong>No comments yet.</strong>";
                               }
                           ?>
                             

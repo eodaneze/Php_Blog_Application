@@ -146,7 +146,6 @@ require_once('./includes/connection.php');
                        $id = $row['post_id'];
                        $createdate = $row['createddate'];
                        $time_ago = time_ago($createdate);
-
                        $dateString = $createdate;
                        $day = date('d', strtotime($dateString)); // Output: 03
                        $month = date('F', strtotime($dateString)); // Output: August
@@ -154,13 +153,23 @@ require_once('./includes/connection.php');
                        
                        $date = "${month} ${day}, ${year}";
 
+                          // Define the maximum length you want to display
+                        $maxDisplayLength = 400;
+
+                        $excerpt = substr($details, 0, $maxDisplayLength);
+                          // Check if the extracted text needs to be truncated to preserve whole words
+                          if (strlen($details) > $maxDisplayLength) {
+                            $lastSpacePos = strrpos($excerpt, ' ');
+                            $excerpt = substr($excerpt, 0, $lastSpacePos) . '...';
+                        }
+
                        ?>
                           <div class="col-lg-12">
                               <div class="blog-post">
                                 <div class="blog-thumb">
                                   <img src="./includes/blogImg/<?=$pic?>" alt="">
                                 </div>
-                                <div class="down-content">
+                                <div class="down-content" style="border: 0;">
                                   <span><?=$cat?></span>
                                   <a href="post-details.php?id=<?=$id?>&category=<?=urlencode($cat)?>"><h4><?=$title?></h4></a>
                                   <ul class="post-info">
@@ -168,7 +177,7 @@ require_once('./includes/connection.php');
                                     <li><a href="#"><?=$date?> | <?=$time_ago?></a></li>
                                     <li><a href="#">12 Comments</a></li>
                                   </ul>
-                                  <p><?=$details?></p>
+                                  <p style="border: none; padding: 0; margin: 0"><?=$excerpt ?></p>
                                   <div class="post-options">
                                     <div class="row">
                                       <div class="col-6">

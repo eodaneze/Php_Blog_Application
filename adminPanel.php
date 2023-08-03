@@ -295,6 +295,7 @@
 
 
     <?php
+  require('./alertify.php');
   require('./footer.php')
 
 ?>

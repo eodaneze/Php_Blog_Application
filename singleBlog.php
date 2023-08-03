@@ -10,7 +10,7 @@
     $row = mysqli_fetch_assoc($result);
     $cat = $row['category'];
     $title = $row['title'];
-    $details = $row['blog_details'];
+    $details = $row['details'];
     $pic = $row['blog_image'];
 
     // Define the maximum length you want to display
@@ -61,7 +61,7 @@
                         <span class="text-uppercase"><?=$cat?></span>
                         <span><?=$title?></span>
                     </h5>
-                    <p style="font-family: 'Times New Roman', Times, serif;"><?=$excerpt?></p>
+                    <p style="font-family: 'Times New Roman', Times, serif;"><?=$details?></p>
                   </div>
              </div>
              <div class="col-lg-4">
@@ -71,6 +71,7 @@
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $title = $row['title'];
+                        
                         ?>
                           <p><?=$title?></p>
                         <?php

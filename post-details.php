@@ -1,32 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+  require_once('./includes/connection.php');
+ require_once('./home_header.php');
+ require_once('./home_navbar.php');
 
-  <head>
+ if(isset($_GET['id'])){
+  $id = $_GET['id'];
+  $sql = "SELECT * FROM posts WHERE post_id = '$id'";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_assoc($result);
+  $cat = $row['category'];
+  $title = $row['title'];
+  $details = $row['blog_details'];
+  $pic = $row['blog_image'];
+ }
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-
-    <title>Stand Blog - Post Details</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-stand-blog.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-<!--
-
-TemplateMo 551 Stand Blog
-
-https://templatemo.com/tm-551-stand-blog
-
--->
-  </head>
+ if(isset($_GET['category'])){
+  $cat = $_GET['category'];
+  
+}
+?>
 
   <body>
 
@@ -41,37 +33,7 @@ https://templatemo.com/tm-551-stand-blog
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
-    <header class="">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Stand Blog<em>.</em></h2></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li> 
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog Entries</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="post-details.html">Post Details</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+   
 
     <!-- Page Content -->
     <!-- Banner Starts Here -->
@@ -92,27 +54,7 @@ https://templatemo.com/tm-551-stand-blog
     
     <!-- Banner Ends Here -->
 
-    <section class="call-to-action">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="main-content">
-              <div class="row">
-                <div class="col-lg-8">
-                  <span>Stand Blog HTML5 Template</span>
-                  <h4>Creative HTML Template For Bloggers!</h4>
-                </div>
-                <div class="col-lg-4">
-                  <div class="main-button">
-                    <a rel="nofollow" href="https://templatemo.com/tm-551-stand-blog" target="_parent">Download Now!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
 
     <section class="blog-posts grid-system">
@@ -124,18 +66,17 @@ https://templatemo.com/tm-551-stand-blog
                 <div class="col-lg-12">
                   <div class="blog-post">
                     <div class="blog-thumb">
-                      <img src="assets/images/blog-post-02.jpg" alt="">
+                      <img src="./includes/blogImg/<?=$pic?>" alt="">
                     </div>
                     <div class="down-content">
-                      <span>Lifestyle</span>
-                      <a href="post-details.html"><h4>Aenean pulvinar gravida sem nec</h4></a>
+                      <span><?=$cat?></span>
+                      <a href="post-details.html"><h4><?=$title?></h4></a>
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
                         <li><a href="#">May 12, 2020</a></li>
                         <li><a href="#">10 Comments</a></li>
                       </ul>
-                      <p>You can browse different tags such as <a rel="nofollow" href="https://templatemo.com/tag/multi-page" target="_parent">multi-page</a>, <a rel="nofollow" href="https://templatemo.com/tag/resume" target="_parent">resume</a>, <a rel="nofollow" href="https://templatemo.com/tag/video" target="_parent">video</a>, etc. to see more CSS templates. Sed hendrerit rutrum arcu, non malesuada nisi. Sed id facilisis turpis. Donec justo elit, dapibus vel ultricies in, molestie sit amet risus. In nunc augue, rhoncus sed libero et, tincidunt tempor nisl. Donec egestas, quam eu rutrum ultrices, sapien ante posuere nisl, ac eleifend eros orci vel ante. Pellentesque vitae eleifend velit. Etiam blandit felis sollicitudin vestibulum feugiat.
-                      <br><br>Donec tincidunt leo nec magna gravida varius. Suspendisse felis orci, egestas ac sodales quis, venenatis et neque. Vivamus facilisis dignissim arcu et blandit. Maecenas finibus dui non pulvinar lacinia. Ut lacinia finibus lorem vel porttitor. Suspendisse et metus nec libero ultrices varius eget in risus. Cras id nibh at erat pulvinar malesuada et non ipsum. Suspendisse id ipsum leo.</p>
+                      <p><?=$details?></p>
                       <div class="post-options">
                         <div class="row">
                           <div class="col-6">
@@ -157,6 +98,8 @@ https://templatemo.com/tm-551-stand-blog
                     </div>
                   </div>
                 </div>
+
+
                 <div class="col-lg-12">
                   <div class="sidebar-item comments">
                     <div class="sidebar-heading">
@@ -258,22 +201,27 @@ https://templatemo.com/tm-551-stand-blog
                 <div class="col-lg-12">
                   <div class="sidebar-item recent-posts">
                     <div class="sidebar-heading">
-                      <h2>Recent Posts</h2>
+                      <h2>Related Posts</h2>
                     </div>
                     <div class="content">
                       <ul>
-                        <li><a href="post-details.html">
-                          <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-                          <span>May 31, 2020</span>
-                        </a></li>
-                        <li><a href="post-details.html">
-                          <h5>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
-                          <span>May 28, 2020</span>
-                        </a></li>
-                        <li><a href="post-details.html">
-                          <h5>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
-                          <span>May 14, 2020</span>
-                        </a></li>
+                           <?php
+                                $sql = "SELECT * FROM posts WHERE category = '$cat' AND NOT post_id = '$id'";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_assoc($result)){
+                                    $title = $row['title'];
+                                    ?>
+                                      <li>
+                                          <a href="post-details.html">
+                                            <h5><?=$title?></h5>
+                                            <span>May 31, 2020</span>
+                                          </a>
+                                       </li>
+                                    <?php
+                                }
+                            ?>
+                          
+                       
                       </ul>
                     </div>
                   </div>

@@ -1,6 +1,7 @@
 <?php
 require_once('./includes/connection.php');
  require_once('./home_header.php');
+ require_once('./home_navbar.php');
 
 ?>
 
@@ -17,37 +18,7 @@ require_once('./includes/connection.php');
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
-    <header class="">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Stand Blog<em>.</em></h2></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li> 
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog Entries</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="post-details.html">Post Details</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    
 
     <!-- Page Content -->
     <!-- Banner Starts Here -->
@@ -170,6 +141,7 @@ require_once('./includes/connection.php');
                        $cat = $row['category'];
                        $pic = $row['blog_image'];
                        $details = $row['blog_details'];
+                       $id = $row['post_id'];
 
                        ?>
                           <div class="col-lg-12">
@@ -179,7 +151,7 @@ require_once('./includes/connection.php');
                                 </div>
                                 <div class="down-content">
                                   <span><?=$cat?></span>
-                                  <a href="post-details.html"><h4><?=$title?></h4></a>
+                                  <a href="post-details.php?id=<?=$id?>&category=<?=urlencode($cat)?>"><h4><?=$title?></h4></a>
                                   <ul class="post-info">
                                     <li><a href="#">Admin</a></li>
                                     <li><a href="#">May 31, 2020</a></li>
@@ -260,12 +232,22 @@ require_once('./includes/connection.php');
                     </div>
                     <div class="content">
                       <ul>
-                        <li><a href="#">- Nature Lifestyle</a></li>
-                        <li><a href="#">- Awesome Layouts</a></li>
-                        <li><a href="#">- Creative Ideas</a></li>
-                        <li><a href="#">- Responsive Templates</a></li>
-                        <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-                        <li><a href="#">- Creative &amp; Unique</a></li>
+                          <?php 
+                                $sql = "SELECT * FROM category";
+                                $result = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $catName = $row['category_name'];
+
+                                    ?>
+
+
+                                        <li><a href="#">- <?=$catName?></a></li>
+                                    <?php
+                                }
+                        
+                        ?>
+                        
+                       
                       </ul>
                     </div>
                   </div>

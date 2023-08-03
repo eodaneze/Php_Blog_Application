@@ -21,11 +21,20 @@
                   <select name="cat" class="form-control">
                      <option>--select category--</option>
                      <?php 
-                     
+                            $sql = "SELECT * FROM category";
+                            $result = mysqli_query($conn, $sql);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $catName = $row['category_name'];
+
+                                ?>
+
+
+                                    <option><?=$catName?></option>
+                                <?php
+                            }
                      
                      ?>
-                     <option>Artificial Intelligence</option>
-                     <option>Cyber Security</option>
+                     
                   </select>
               </div>
               <div class="col-lg-6 mb-3">

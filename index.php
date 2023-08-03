@@ -1,10 +1,21 @@
 <?php
 require_once('./includes/connection.php');
  require_once('./home_header.php');
- require_once('./home_navbar.php');
+//  require_once('./home_navbar.php');
  require_once('./includes/function.php');
 
 
+
+ $sql = 'SELECT * FROM  posts';
+ $result = mysqli_query($conn, $sql);
+ $row = mysqli_fetch_assoc($result);
+ $post_id = $row['post_id'];
+ 
+// display the count of comments
+$sql = "SELECT COUNT(*) AS comment_count FROM post_comments WHERE post_id = '$post_id'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$getCount = $row['comment_count'];
 ?>
 
   <body>
@@ -150,6 +161,7 @@ require_once('./includes/connection.php');
                        $day = date('d', strtotime($dateString)); // Output: 03
                        $month = date('F', strtotime($dateString)); // Output: August
                        $year = date('Y', strtotime($dateString)); // Output: 2023
+
                        
                        $date = "${month} ${day}, ${year}";
 
@@ -162,7 +174,7 @@ require_once('./includes/connection.php');
                             $lastSpacePos = strrpos($excerpt, ' ');
                             $excerpt = substr($excerpt, 0, $lastSpacePos) . '...';
                         }
-
+                          
                        ?>
                           <div class="col-lg-12">
                               <div class="blog-post">
@@ -175,7 +187,7 @@ require_once('./includes/connection.php');
                                   <ul class="post-info">
                                     <li><a href="#">Admin</a></li>
                                     <li><a href="#"><?=$date?> | <?=$time_ago?></a></li>
-                                    <li><a href="#">12 Comments</a></li>
+                                    <li><a href="#"><?=$getCount?> Comments</a></li>
                                   </ul>
                                   <p style="border: none; padding: 0; margin: 0"><?=$excerpt ?></p>
                                   <div class="post-options">

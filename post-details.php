@@ -28,6 +28,10 @@
   $cat = $_GET['category'];
   
 }
+$sql = "SELECT COUNT(*) AS comment_count FROM post_comments WHERE post_id = '$post_id'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$getCount = $row['comment_count'];
 ?>
 
   <body>
@@ -84,7 +88,7 @@
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
                         <li><a href="#"><?=$date?></a></li>
-                        <li><a href="#">10 Comments</a></li>
+                        <li><a href="#"><?=mysqli_num_rows($result) == 0 ? '0 comment' : $getCount?> Comment</a></li>
                       </ul>
                       <p><?=$details?></p>
                       <div class="post-options">

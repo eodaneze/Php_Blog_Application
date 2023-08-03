@@ -2,6 +2,8 @@
 require_once('./includes/connection.php');
  require_once('./home_header.php');
  require_once('./home_navbar.php');
+ require_once('./includes/function.php');
+
 
 ?>
 
@@ -142,6 +144,15 @@ require_once('./includes/connection.php');
                        $pic = $row['blog_image'];
                        $details = $row['blog_details'];
                        $id = $row['post_id'];
+                       $createdate = $row['createddate'];
+                       $time_ago = time_ago($createdate);
+
+                       $dateString = $createdate;
+                       $day = date('d', strtotime($dateString)); // Output: 03
+                       $month = date('F', strtotime($dateString)); // Output: August
+                       $year = date('Y', strtotime($dateString)); // Output: 2023
+                       
+                       $date = "${month} ${day}, ${year}";
 
                        ?>
                           <div class="col-lg-12">
@@ -154,7 +165,7 @@ require_once('./includes/connection.php');
                                   <a href="post-details.php?id=<?=$id?>&category=<?=urlencode($cat)?>"><h4><?=$title?></h4></a>
                                   <ul class="post-info">
                                     <li><a href="#">Admin</a></li>
-                                    <li><a href="#">May 31, 2020</a></li>
+                                    <li><a href="#"><?=$date?> | <?=$time_ago?></a></li>
                                     <li><a href="#">12 Comments</a></li>
                                   </ul>
                                   <p><?=$details?></p>

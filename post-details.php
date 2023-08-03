@@ -12,6 +12,15 @@
   $title = $row['title'];
   $details = $row['blog_details'];
   $pic = $row['blog_image'];
+  $createdate = $row['createddate'];
+
+  $dateString = $createdate;
+  $day = date('d', strtotime($dateString)); // Output: 03
+  $month = date('F', strtotime($dateString)); // Output: August
+  $year = date('Y', strtotime($dateString)); // Output: 2023
+  
+  $date = "${month} ${day}, ${year}";
+  
  }
 
  if(isset($_GET['category'])){
@@ -73,7 +82,7 @@
                       <a href="post-details.html"><h4><?=$title?></h4></a>
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
-                        <li><a href="#">May 12, 2020</a></li>
+                        <li><a href="#"><?=$date?></a></li>
                         <li><a href="#">10 Comments</a></li>
                       </ul>
                       <p><?=$details?></p>
@@ -210,11 +219,12 @@
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_assoc($result)){
                                     $title = $row['title'];
+                                   
                                     ?>
                                       <li>
                                           <a href="post-details.html">
                                             <h5><?=$title?></h5>
-                                            <span>May 31, 2020</span>
+                                            <span><?=$date?></span>
                                           </a>
                                        </li>
                                     <?php

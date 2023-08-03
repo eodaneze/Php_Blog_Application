@@ -136,13 +136,13 @@ require_once('./includes/connection.php');
             <div class="all-blog-posts">
               <div class="row">
                 <?php
-                    $sql = 'SELECT * FROM posts';
+                    $sql = 'SELECT * FROM  posts ORDER BY createddate DESC';
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_assoc($result)){
                        $title = $row['title'];
                        $cat = $row['category'];
                        $pic = $row['blog_image'];
-                       $details = $row['blog_details'];
+                       $details = $row['details'];
                        $id = $row['post_id'];
                        $createdate = $row['createddate'];
                        $time_ago = time_ago($createdate);

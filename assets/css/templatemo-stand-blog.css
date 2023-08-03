@@ -585,7 +585,7 @@ ul.page-numbers li a:hover {
 	border-bottom: none;
 }
 
-.blog-posts .comments ul li .author-thumb {
+/* .blog-posts .comments ul li .author-thumb {
 	display: inline;
 	float: left;
 }
@@ -593,7 +593,7 @@ ul.page-numbers li a:hover {
 .blog-posts .comments ul li .author-thumb img {
 	max-width: 100px;
 	display: inline;
-}
+} */
 
 .blog-posts .comments ul li .right-content {
 	margin-left: 130px;

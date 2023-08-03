@@ -20,6 +20,10 @@
                   <label class="fw-bold">Blog Category</label>
                   <select name="cat" class="form-control">
                      <option>--select category--</option>
+                     <?php 
+                     
+                     
+                     ?>
                      <option>Artificial Intelligence</option>
                      <option>Cyber Security</option>
                   </select>

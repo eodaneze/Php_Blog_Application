@@ -36,12 +36,17 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-gem"></i><span>Sellers</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-gem"></i><span>Categories</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
+                    <a href="./addCategory.php">
+                        <i class="bi bi-circle"></i><span>Add Category</span>
+                    </a>
+                </li>
+                <li>
                     <a href="./viewSeller.php">
-                        <i class="bi bi-circle"></i><span>View Seller</span>
+                        <i class="bi bi-circle"></i><span>View Category</span>
                     </a>
                 </li>
             </ul>

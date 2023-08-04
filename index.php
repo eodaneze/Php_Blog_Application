@@ -1,7 +1,7 @@
 <?php
 require_once('./includes/connection.php');
  require_once('./home_header.php');
-//  require_once('./home_navbar.php');
+ require_once('./home_navbar.php');
  require_once('./includes/function.php');
 
 
@@ -241,18 +241,24 @@ $getCount = $row['comment_count'];
                     </div>
                     <div class="content">
                       <ul>
-                        <li><a href="post-details.html">
-                          <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-                          <span>May 31, 2020</span>
-                        </a></li>
-                        <li><a href="post-details.html">
-                          <h5>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
-                          <span>May 28, 2020</span>
-                        </a></li>
-                        <li><a href="post-details.html">
-                          <h5>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
-                          <span>May 14, 2020</span>
-                        </a></li>
+                      <?php
+                            $sql = "SELECT * FROM posts WHERE category = '$cat'  ORDER BY createddate DESC";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                $title = $row['title'];
+                                
+                                ?>
+                                   <li>
+                                      <a href="post-details.html">
+                                        <h5><?=$title?></h5>
+                                        <span><?=$date?></span>
+                                      </a>
+                                  </li>
+                                <?php
+                            }
+                        ?>
+                       
+                        
                       </ul>
                     </div>
                   </div>

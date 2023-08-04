@@ -131,6 +131,10 @@ $getCount = $row['comment_count'];
                                   while($row = mysqli_fetch_assoc($result)){
                                     $name = $row['name'];
                                     $email = $row['email'];
+                                    $getName = explode('@', $email);
+                                    $getName2 = $getName[0];
+                                    // echo $getName;
+                                    // die();
                                     $comment = $row['comment'];
                                     $created_at = $row['created_at'];
                                     $dateString = $created_at;
@@ -145,7 +149,7 @@ $getCount = $row['comment_count'];
                                                 <img src="assets/images/comment-author-01.jpg" alt="">
                                               </div>
                                               <div class="right-content">
-                                                <h4><?=$email?><span><?=$date?></span></h4>
+                                                <h4><?=ucfirst($getName2)?><span><?=$date?></span></h4>
                                                 <p><?=$comment?></p>
                                               </div>
                                             </li>

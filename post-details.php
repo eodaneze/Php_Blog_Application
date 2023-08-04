@@ -123,7 +123,7 @@ $getCount = $row['comment_count'];
                       <ul>
                           <?php
 
-                              $sql = "SELECT * FROM post_comments WHERE post_id = $post_id ORDER BY created_at DESC";
+                              $sql = "SELECT * FROM approved_comments WHERE post_id = $post_id ORDER BY created_at DESC";
                               $result = mysqli_query($conn, $sql);
                               if($result && mysqli_num_rows($result) > 0){
                                   echo "<h2>Comments</h2>";

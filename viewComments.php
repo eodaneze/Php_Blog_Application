@@ -11,7 +11,7 @@
         <h1>Comments</h1>
     </div>
 
-    <form action="./includes/approve_comment.php" method="post">
+   
     <div class="table-responsive">
         <table class="table table-bordered">
               <thead>
@@ -39,17 +39,18 @@
                             $post_id = $row['post_id'];
 
                             $sql1 = "SELECT * FROM approved_comments WHERE post_id = '$post_id'";
-                             $result1 = mysqli_query($conn, $sql);
+                             $result1 = mysqli_query($conn, $sql1);
                             ?>
-                                <tr>
-                                     <td><?=$num++?></td>
-                                     <td><?=$name?></td>
-                                     <td><?=$email?></td>
-                                     <td><?=$comment?></td>
-                                     <input type="hidden" name="post_id" value="<?=$post_id?>">
-                                     <td><?=mysqli_num_rows($result1) == 0 ? '<button class="btn btn-success">Approved</button>' : '<button class="btn btn-secondary" name="approve">Pending</button>'?></td>
-                                </tr>
-
+                                <form action="./includes/approve_comment.php" method="post">
+                                        <tr>
+                                            <td><?=$num++?></td>
+                                            <td><?=$name?></td>
+                                            <td><?=$email?></td>
+                                            <td><?=$comment?></td>
+                                            <input type="hidden" name="post_id" value="<?=$post_id?>">
+                                            <td><?=mysqli_num_rows($result1) > 0 ? '<button class="btn btn-success">Approved</button>' : '<button class="btn btn-secondary" name="approve">Pending</button>'?></td>
+                                        </tr>
+                               </form>
                             <?php
                         }
                     ?>
@@ -57,8 +58,11 @@
 
         </table>
     </div>
-    </form>
+    
 </main>
 
 
-<?php require_once('./footer.php') ?>
+<?php
+ require_once('./alertify.php');
+ require_once('./footer.php');
+  ?>

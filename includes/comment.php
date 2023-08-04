@@ -12,6 +12,7 @@
         $_SESSION['error'] = "All fields are required";
         header('location: ../post-details.php');
     }else{
+      // mysqli_query($conn, "SET FOREIGN_KEY_CHECKS=0");
        $sql = "INSERT INTO post_comments(post_id, name, email, comment)VALUES('$post_id', '$name', '$email', '$message')";
        $result = mysqli_query($conn, $sql);
        if($result){

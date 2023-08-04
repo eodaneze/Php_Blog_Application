@@ -1,31 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-
-    <title>Stand Blog - Contact Page</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-stand-blog.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-<!--
-
-TemplateMo 551 Stand Blog
-
-https://templatemo.com/tm-551-stand-blog
-
--->
+require_once('./home_header.php');
+?>
   </head>
 
   <body>
@@ -41,38 +17,9 @@ https://templatemo.com/tm-551-stand-blog
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
-    <header class="">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Stand Blog<em>.</em></h2></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li> 
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog Entries</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="post-details.html">Post Details</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
+    <?php
+   require_once('./home_navbar.php')
+    ?>
     <!-- Page Content -->
     <!-- Banner Starts Here -->
     <div class="heading-page header-text">
@@ -106,7 +53,7 @@ https://templatemo.com/tm-551-stand-blog
                       <h2>Send us a message</h2>
                     </div>
                     <div class="content">
-                      <form id="contact" action="" method="post">
+                      <form id="contact" action="./includes/contact.php" method="post">
                         <div class="row">
                           <div class="col-md-6 col-sm-12">
                             <fieldset>
@@ -118,11 +65,6 @@ https://templatemo.com/tm-551-stand-blog
                               <input name="email" type="text" id="email" placeholder="Your email" required="">
                             </fieldset>
                           </div>
-                          <div class="col-md-12 col-sm-12">
-                            <fieldset>
-                              <input name="subject" type="text" id="subject" placeholder="Subject">
-                            </fieldset>
-                          </div>
                           <div class="col-lg-12">
                             <fieldset>
                               <textarea name="message" rows="6" id="message" placeholder="Your Message" required=""></textarea>
@@ -130,7 +72,7 @@ https://templatemo.com/tm-551-stand-blog
                           </div>
                           <div class="col-lg-12">
                             <fieldset>
-                              <button type="submit" id="form-submit" class="main-button">Send Message</button>
+                              <button name="send" id="form-submit" class="main-button">Send Message</button>
                             </fieldset>
                           </div>
                         </div>
@@ -222,5 +164,10 @@ https://templatemo.com/tm-551-stand-blog
       }
     </script>
 
+
+<?php
+ require_once('./alertify.php')
+
+?>
   </body>
 </html>

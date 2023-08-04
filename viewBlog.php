@@ -33,8 +33,9 @@
                             <p>
                                 <span>Category: Artificial Intelligence</span>
                                 <span>Tag: Educational</span>
+                                
                              </p>
-                            <a href=""><i class="fa fa-edit"></i></a>
+                            <a href="./editBlog.php?id=<?=$id?>"><i class="fa fa-edit"></i></a>
                             <a href="./includes/delete.php?id=<?=$id?>"><i class="fa fa-trash"></i></a>
                         </div>
                     </div>

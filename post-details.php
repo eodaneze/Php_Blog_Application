@@ -1,7 +1,7 @@
 <?php
   require_once('./includes/connection.php');
  require_once('./home_header.php');
- require_once('./home_navbar.php');
+//  require_once('./home_navbar.php');
 
  if(isset($_GET['id'])){
   $id = $_GET['id'];
@@ -14,6 +14,7 @@
   $pic = $row['blog_image'];
   $createdate = $row['createddate'];
   $post_id = $row['post_id'];
+  
 
   $dateString = $createdate;
   $day = date('d', strtotime($dateString)); // Output: 03
@@ -183,7 +184,7 @@ $getCount = $row['comment_count'];
                           <div class="col-md-6 col-sm-12">
                             <fieldset>
                               <input name="email" type="text" id="email" placeholder="Your email">
-                              <input type="hidden" name="post_id" value="<?=$row['post_id']?>">
+                              <input type="hidden" name="post_id" value="<?=$id?>">
                             </fieldset>
                           </div>
                           

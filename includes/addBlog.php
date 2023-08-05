@@ -2,6 +2,7 @@
 session_start();
 require_once("./connection.php");
  if(isset($_POST['add'])){
+    $author = isset($_POST['author']) ? trim($_POST['author']) : "";
     $title = isset($_POST['title']) ? trim($_POST['title']) : "";
     $cat = isset($_POST['cat']) ? trim($_POST['cat']) : "";
     $tags = isset($_POST['tags']) ? trim($_POST['tags']) : "";
@@ -20,6 +21,7 @@ require_once("./connection.php");
          header('location:../addBlog.php');
          exit();
      }else{
+        $author = trimData($author);
         $title = trimData($title);
         $cat = trimData($cat);
         $tags = trimData($tags);
@@ -43,7 +45,7 @@ require_once("./connection.php");
                 if(move_uploaded_file($filetmp, $filedestination)){
                     $md = date('Y-m-d H:i:s');
                    
-                    $sql = "INSERT INTO  posts(title, category, tags, blog_image, details)VALUES('$title', '$cat', '$tags','$pic', '$content ')";
+                    $sql = "INSERT INTO  posts(author, title, category, tags, blog_image, details)VALUES('$author', '$title', '$cat', '$tags','$pic', '$content ')";
 
                     $result = mysqli_query($conn, $sql);
                     if($result){

@@ -22,11 +22,15 @@
         </div>
         <form action="./includes/addBlog.php" enctype="multipart/form-data" method="post" class=" bg-white border p-3">
            <div class="row">
+           <div class="col-lg-3 mb-3">
+                  <label class="fw-bold">Author</label>
+                  <input name="author" type="text" class="form-control">
+              </div>
               <div class="col-lg-6 mb-3">
                   <label class="fw-bold">Blog Title</label>
                   <input name="title" type="text" class="form-control">
               </div>
-              <div class="col-lg-6 mb-3">
+              <div class="col-lg-3 mb-3">
                   <label class="fw-bold">Blog Category</label>
                   <select name="cat" class="form-control">
                      <option>--select category--</option>

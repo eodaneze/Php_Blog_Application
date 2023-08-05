@@ -9,9 +9,10 @@ if(isset($_POST['approve'])){
    $name = $row['name'];
    $email = $row['email'];
    $comment = $row['comment'];
+   $comment_id = $row['comment_id'];
    $post_id = $row['post_id'];
 
-   $insertSql = "INSERT INTO approved_comments(post_id, name, email, comment)VALUES('$post_id', '$name', '$email', '$comment')";
+   $insertSql = "INSERT INTO approved_comments(post_id,comment_id, name, email, comment)VALUES('$post_id','$comment_id', '$name', '$email', '$comment')";
    $result = mysqli_query($conn, $insertSql);
    if($result){
       $_SESSION['success'] = "Comment have been approved successfully";

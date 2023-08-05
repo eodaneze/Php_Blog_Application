@@ -1,7 +1,7 @@
 <?php
   require_once('./includes/connection.php');
  require_once('./home_header.php');
-//  require_once('./home_navbar.php');
+ require_once('./home_navbar.php');
 
  if(isset($_GET['id'])){
   $id = $_GET['id'];
@@ -12,6 +12,9 @@
   $title = $row['title'];
   $details = $row['details'];
   $pic = $row['blog_image'];
+  $author = $row['author'];
+  $getFirstName = explode(' ', $author);
+  $firstName = $getFirstName[0];
   $createdate = $row['createddate'];
   $post_id = $row['post_id'];
   
@@ -29,7 +32,7 @@
   $cat = $_GET['category'];
   
 }
-$sql = "SELECT COUNT(*) AS comment_count FROM post_comments WHERE post_id = '$post_id'";
+$sql = "SELECT COUNT(*) AS comment_count FROM  approved_comments WHERE post_id = '$post_id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $getCount = $row['comment_count'];
@@ -87,7 +90,7 @@ $getCount = $row['comment_count'];
                       <span><?=$cat?></span>
                       <a href="post-details.html"><h4><?=$title?></h4></a>
                       <ul class="post-info">
-                        <li><a href="#">Admin</a></li>
+                        <li><a href="#"><?=$firstName?></a></li>
                         <li><a href="#"><?=$date?></a></li>
                         <li><a href="#"><?=mysqli_num_rows($result) == 0 ? '0 comment' : $getCount?> Comment</a></li>
                       </ul>
@@ -134,8 +137,8 @@ $getCount = $row['comment_count'];
                                     $email = $row['email'];
                                     $getName = explode('@', $email);
                                     $getName2 = $getName[0];
-                                    // echo $getName;
-                                    // die();
+
+                                    $firstLetter = mb_substr($getName2, 0,1, "UTF-8");
                                     $comment = $row['comment'];
                                     $created_at = $row['created_at'];
                                     $dateString = $created_at;
@@ -147,7 +150,8 @@ $getCount = $row['comment_count'];
                                       ?>
                                             <li>
                                               <div class="author-thumb">
-                                                <img src="assets/images/comment-author-01.jpg" alt="">
+                                                <!-- <img src="assets/images/comment-author-01.jpg" alt=""> -->
+                                                <h1 class="bg-dark text-white py-3 px-4"><?=ucfirst($firstLetter)?></h1>
                                               </div>
                                               <div class="right-content">
                                                 <h4><?=ucfirst($getName2)?><span><?=$date?></span></h4>

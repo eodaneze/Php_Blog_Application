@@ -154,6 +154,9 @@ $getCount = $row['comment_count'];
                        $cat = $row['category'];
                        $pic = $row['blog_image'];
                        $details = $row['details'];
+                       $author = $row['author'];
+                       $getFirstName = explode(' ', $author);
+                       $firstName = $getFirstName[0];
                        $id = $row['post_id'];
                        $createdate = $row['createddate'];
                        $time_ago = time_ago($createdate);
@@ -185,7 +188,7 @@ $getCount = $row['comment_count'];
                                   <span><?=$cat?></span>
                                   <a href="post-details.php?id=<?=$id?>&category=<?=urlencode($cat)?>"><h4><?=$title?></h4></a>
                                   <ul class="post-info">
-                                    <li><a href="#">Admin</a></li>
+                                    <li><a href="#"><?=$firstName?></a></li>
                                     <li><a href="#"><?=$date?> | <?=$time_ago?></a></li>
                                     <li><a href="#"><?=$getCount?> Comments</a></li>
                                   </ul>
@@ -242,20 +245,27 @@ $getCount = $row['comment_count'];
                     <div class="content">
                       <ul>
                       <?php
-                            $sql = "SELECT * FROM posts WHERE category = '$cat'  ORDER BY createddate DESC";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_assoc($result)){
-                                $title = $row['title'];
-                                
-                                ?>
-                                   <li>
-                                      <a href="post-details.html">
-                                        <h5><?=$title?></h5>
-                                        <span><?=$date?></span>
-                                      </a>
-                                  </li>
-                                <?php
-                            }
+                         $sql2 = "SELECT * FROM posts";
+                         $result = mysqli_query($conn, $sql);
+                         if(mysqli_num_rows($result) > 0){
+                          
+                           $sql = "SELECT * FROM posts WHERE category = '$cat'  ORDER BY createddate DESC";
+                           $result = mysqli_query($conn, $sql);
+                           while($row = mysqli_fetch_assoc($result)){
+                               $title = $row['title'];
+                               
+                               ?>
+                                  <li>
+                                     <a href="post-details.html">
+                                       <h5><?=$title?></h5>
+                                       <span><?=$date?></span>
+                                     </a>
+                                 </li>
+                               <?php
+                           }
+                         }else{
+                            ?>No recent blog yet!!<?php
+                         }
                         ?>
                        
                         

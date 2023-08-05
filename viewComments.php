@@ -17,7 +17,6 @@
               <thead>
                   <tr>
                       <th>S/N</th>
-                      <th>Name</th>
                       <th>Email</th>
                       <th>Message</th>
                       <th>Status</th>
@@ -33,19 +32,23 @@
                         $result = mysqli_query($conn, $sql);
                         $num = 1;
                         while($row = mysqli_fetch_assoc($result)){
-                            $name = $row['name'];
+                            // $name = $row['name'];
                             $email = $row['email'];
                             $comment = $row['comment'];
                             $post_id = $row['post_id'];
+                            $id = $row['comment_id'];
+                            // echo $id;
+                            // die();
 
-                            $sql1 = "SELECT * FROM approved_comments WHERE post_id = '$post_id'";
+                            $sql1 = "SELECT * FROM approved_comments WHERE comment_id = '$id'";
                              $result1 = mysqli_query($conn, $sql1);
                             ?>
                                 <form action="./includes/approve_comment.php" method="post">
                                         <tr>
                                             <td><?=$num++?></td>
-                                            <td><?=$name?></td>
+                                            
                                             <td><?=$email?></td>
+                                         
                                             <td><?=$comment?></td>
                                             <input type="hidden" name="post_id" value="<?=$post_id?>">
                                             <td><?=mysqli_num_rows($result1) > 0 ? '<button class="btn btn-success">Approved</button>' : '<button class="btn btn-secondary" name="approve">Pending</button>'?></td>

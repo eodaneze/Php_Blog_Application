@@ -2,10 +2,10 @@
  session_start();
  require_once('./connection.php');
   if(isset($_POST['submit'])){
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
-    $post_id = $_POST['post_id'];
+    $name = isset($_POST['name']) ? trim($_POST['name']) : "";
+    $email = isset($_POST['email']) ? trim($_POST['email']) : "";
+    $message = isset($_POST['message']) ? trim($_POST['message']) : "";
+    $post_id = isset($_POST['post_id']) ? trim($_POST['post_id']) : "";
    
 
     if($name = "" || $email == "" || $message == ""){

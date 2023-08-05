@@ -57,6 +57,7 @@
                      <option>--select Tags--</option>
                      <option>Education</option>
                      <option>Motivation</option>
+                     <option>Important</option>
                   </select>
               </div>
               <div class="col-lg-6 mb-3">
